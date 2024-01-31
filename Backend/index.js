@@ -18,6 +18,7 @@ app.get('/', (req, res, next)=>{
 
 app.use('/api/', require('./Routes/files')); 
 app.use('/api/recieve/', require('./Routes/download')); 
+app.use('/api/email/', require('./Routes/email')); 
 
 app.use(ErrorHandler); 
 

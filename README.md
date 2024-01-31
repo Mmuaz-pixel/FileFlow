@@ -1,2 +1,2 @@
 # FileFlow
-A file sharing MERN application. 
+A file sharing Node js application (Backend only). 
