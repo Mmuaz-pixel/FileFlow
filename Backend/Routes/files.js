@@ -9,7 +9,7 @@ const util = require('util');
 let storage = multer.diskStorage({
 	destination: (req, file, callback) => callback(null, './Uploads/'),
 	filename: (req, file, callback) => {
-		const uniqueName = `${Date.now()}-${Math.round(Math.random() * 150)}${path.extname(file.originalname)}`;
+		const uniqueName = `${Date.now()}-${file.originalname}`;
 		callback(null, uniqueName);
 	}
 })
@@ -40,9 +40,9 @@ router.post('/uploadfile', async (req, res, next) => {
 			size: req.file.size,
 		});
 
-		return res.json({ file: `${process.env.APP_BASE_URL}/files/${file.uuid}` });
+		return res.json({ file: file.uuid });
 	} catch (error) {
-		next(error); 
+		next(error);
 	}
 });
 

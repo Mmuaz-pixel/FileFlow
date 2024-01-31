@@ -16,7 +16,8 @@ app.get('/', (req, res, next)=>{
 	res.json({msg: 'hello'}); 
 })
 
-app.use('/api', require('./Routes/files')); 
+app.use('/api/', require('./Routes/files')); 
+app.use('/api/recieve/', require('./Routes/download')); 
 
 app.use(ErrorHandler); 
 

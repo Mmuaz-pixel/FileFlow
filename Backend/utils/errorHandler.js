@@ -38,7 +38,9 @@ const ErrorHandler = async (err, req, res, next) => {
 	})
 
 	if (err) {
-		await errorLogger.logError(err);
+		if (err.statusCode == 500) {
+			await errorLogger.logError(err);
+		}
 		return res.status(err.statusCode).json({ 'message': err.message, 'status': err.statusCode })
 	}
 	next();
