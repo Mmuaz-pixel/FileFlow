@@ -9,7 +9,7 @@ const app = express();
 connectDb(); 
 
 app.use(cors()); 
-// app.use(helmet()); 
+app.use(helmet()); 
 app.use(express.json()); 
 
 app.get('/', (req, res, next)=>{

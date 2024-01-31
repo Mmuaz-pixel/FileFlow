@@ -39,11 +39,7 @@ const ErrorHandler = async (err, req, res, next) => {
 
 	if (err) {
 		await errorLogger.logError(err);
-		if (err.errorStack) {
-			const errorDescription = err.errorStack;
-			return res.status(err.statusCode).json({ 'message': errorDescription })
-		}
-		return res.status(err.statusCode).json({ 'message': err.message })
+		return res.status(err.statusCode).json({ 'message': err.message, 'status': err.statusCode })
 	}
 	next();
 }
